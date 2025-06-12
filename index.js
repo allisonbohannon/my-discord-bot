@@ -36,7 +36,6 @@ for (const folder of commandFolders) {
 
 
 client.on(Events.InteractionCreate, async interaction => {
-    console.log('test');
 	if (!interaction.isChatInputCommand()) return;
 	const command = interaction.client.commands.get(interaction.commandName);
 
@@ -58,12 +57,12 @@ client.on(Events.InteractionCreate, async interaction => {
 });
 
 
-client.on('messageCreate', async (message) => {
+/*client.on('messageCreate', async (message) => {
     if (message.content === 'ping') {
         message.reply({
             content: 'pong',
         });
     }
-});
+});*/
 
 client.login(process.env.DISCORD_BOT_ID); //logs in with the discord_bot_id token saved in the .env file
