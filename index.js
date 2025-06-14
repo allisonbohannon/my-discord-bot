@@ -2,39 +2,43 @@ require('dotenv').config();
 const fs = require('node:fs');
 const path = require('node:path');
 
-const { Client, Collection, Events, GatewayIntentBits } = require('discord.js'); //import needed functions from discord.js module
+// Import needed functions from discord.js module
+const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] }); //configure which events the discord bot can receive
 
-client.commands = new Collection(); //Attach a command file to the client to access commands from other files 
-
+// Attach a command file to the client to access commands from other files
+client.commands = new Collection();
 
 client.on('ready', () => {
-    console.log('bot is ready');
+	console.log('bot is ready');
 });
 
 
-//Dynamically retrieve command files
-const foldersPath = path.join(__dirname, 'commands'); //Construct a path to the Command directory
-const commandFolders = fs.readdirSync(foldersPath); //Returns a array of all folders in the path
+// Dynamically retrieve command files
+
+// Construct a path to the Command directory
+const foldersPath = path.join(__dirname, 'commands');
+// Returns a array of all folders in the path
+const commandFolders = fs.readdirSync(foldersPath);
 
 for (const folder of commandFolders) {
-	const commandsPath = path.join(foldersPath, folder); 
-	const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js')); //Returns an array of all relevant files within the folder
+	const commandsPath = path.join(foldersPath, folder);
+	// Returns an array of all relevant files within the folder
+	const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js')); 
 	for (const file of commandFiles) {
 		const filePath = path.join(commandsPath, file);
 		const command = require(filePath);
 		// Set a new item in the Collection with the key as the command name and the value as the exported module
 		if ('data' in command && 'execute' in command) {
-			client.commands.set(command.data.name, command); //Dynamically set commands for each file in the folder
+			 // Dynamically set commands for each file in the folder
+			client.commands.set(command.data.name, command);
 		} else {
 			console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
 		}
 	}
-}; 
+};
 
-// Receive Command interactions 
-
-
+// Receive Command interactions
 client.on(Events.InteractionCreate, async interaction => {
 	if (!interaction.isChatInputCommand()) return;
 	const command = interaction.client.commands.get(interaction.commandName);
@@ -56,13 +60,5 @@ client.on(Events.InteractionCreate, async interaction => {
 	}
 });
 
-
-/*client.on('messageCreate', async (message) => {
-    if (message.content === 'ping') {
-        message.reply({
-            content: 'pong',
-        });
-    }
-});*/
-
-client.login(process.env.DISCORD_BOT_ID); //logs in with the discord_bot_id token saved in the .env file
+// Logs in with the discord_bot_id token saved in the .env file
+client.login(process.env.DISCORD_BOT_ID);
