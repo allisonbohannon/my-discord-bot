@@ -1,4 +1,4 @@
-require('dotenv').config();
+const { token } = require('./config.json');
 const fs = require('node:fs');
 const path = require('node:path');
 
@@ -17,7 +17,7 @@ client.on('ready', () => {
 // Dynamically retrieve command files
 
 // Construct a path to the Command directory
-const foldersPath = path.join(__dirname, 'commands');
+const foldersPath = path.join(__dirname, 'src/commands');
 // Returns a array of all folders in the path
 const commandFolders = fs.readdirSync(foldersPath);
 
@@ -61,4 +61,4 @@ client.on(Events.InteractionCreate, async interaction => {
 });
 
 // Logs in with the discord_bot_id token saved in the .env file
-client.login(process.env.DISCORD_BOT_ID);
+client.login(token);
