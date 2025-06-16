@@ -1,8 +1,8 @@
 const { SlashCommandBuilder } = require('discord.js');
 const { weather } = require('../../handlers/utility/weatherHandler');
 
-const main = async () => {
-	const result = await weather()
+const main = async (zipcode) => {
+	const result = await weather(zipcode)
 		.then(data => {
 			return data;
 		})
@@ -15,8 +15,13 @@ const main = async () => {
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('weather')
-		.setDescription('Provides a weather update'),
+		.setDescription('Replies with the local weather')
+		.addStringOption(option =>
+			option.setName('zipcode')
+				.setDescription('Input your zipcode')
+				.setRequired(true)),
 	async execute(interaction) {
-		interaction.reply({ content: await main() });
+		const zipcode = interaction.options.getString('zipcode');
+		interaction.reply({ content: await main(zipcode) });
 	},
 };
