@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js');
-const { catFact } = require('../../handlers/catHandler');
+const { catFact } = require('../../handlers/silly/catHandler');
 
 const main = async () => {
 	const result = await catFact()
