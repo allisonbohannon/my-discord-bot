@@ -9,7 +9,7 @@ const main = async (zipcode) => {
 		.catch(error => {
 			console.error('Error:', error);
 		});
-	return result;
+	return `It's ${result.temp} in ${result.name}`;
 };
 
 module.exports = {
