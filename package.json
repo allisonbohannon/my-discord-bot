@@ -18,8 +18,17 @@
   },
   "homepage": "https://github.com/allisonbohannon/discord-weather-bot#readme",
   "dependencies": {
-    "axios": "^1.9.0",
+    "@google-cloud/local-auth": "^2.1.0",
+    "axios": "^1.10.0",
+    "convert-units": "^2.3.4",
     "discord.js": "^14.19.3",
-    "dotenv": "^16.5.0"
+    "dotenv": "^16.5.0",
+    "googleapis": "^105.0.0",
+    "node-fetch": "^3.3.2",
+    "undici": "^7.10.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.28.0",
+    "eslint": "^9.28.0"
   }
 }
