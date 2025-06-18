@@ -15,7 +15,7 @@ const main = async () => {
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('schedule')
-		.setDescription('Lists out all calendar events for the day'),
+		.setDescription('Lists out all remaining calendar events for the day'),
 	async execute(interaction) {
 		interaction.reply({ content: await main() });
 	},

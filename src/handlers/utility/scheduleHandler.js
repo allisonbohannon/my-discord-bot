@@ -1,8 +1,11 @@
 const fsp = require('node:fs/promises');
 const path = require('node:path');
 const process = require('process');
-const {authenticate} = require('@google-cloud/local-auth');
-const {google} = require('googleapis');
+const { authenticate } = require('@google-cloud/local-auth');
+const { google } = require('googleapis');
+const dayjs = require('dayjs');
+
+
 
 // If modifying these scopes, delete token.json.
 const SCOPES = ['https://www.googleapis.com/auth/calendar.readonly'];
@@ -69,29 +72,33 @@ async function authorize() {
  */
 
 async function listEvents(auth) {
+	const endOfDay = dayjs().endOf('day');
+
 	const calendar = google.calendar({ version: 'v3', auth });
 	const res = await calendar.events.list({
 		calendarId: 'primary',
 		timeMin: new Date().toISOString(),
+		timeMax: endOfDay.toISOString(),
 		maxResults: 10,
 		singleEvents: true,
 		orderBy: 'startTime',
 	});
 	const events = res.data.items;
+	console.log(events);
 	if (!events || events.length === 0) {
-		console.log('No upcoming events found.');
-		return;
+		return ('No upcoming events found.');
 	}
-	console.log('Upcoming 10 events:');
-	events.map((event, i) => {
-		const start = event.start.dateTime || event.start.date;
-		console.log(`${start} - ${event.summary}`);
+	let str = 'For the rest of the day, you have:\n';
+	events.forEach((event) => {
+		const startTime = new Date(event.start.dateTime).toLocaleTimeString();
+		str += `${event.summary} at ${startTime}\n`;
 	});
+	console.log(str);
+	return str;
 }
 
 const getEvents = async () => {
-	authorize().then(listEvents).catch(console.error);
-    return 'Plan some events, loser';
+	return authorize().then(listEvents).catch(console.error);
 };
 
 module.exports = { getEvents : getEvents };
