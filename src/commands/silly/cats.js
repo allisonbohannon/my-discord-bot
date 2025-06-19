@@ -17,6 +17,7 @@ module.exports = {
 		.setName('cats')
 		.setDescription('Gives a random cat fact'),
 	async execute(interaction) {
-		interaction.reply({ content: await main() });
+		await interaction.deferReply();
+		interaction.editReply({ content: await main() });
 	},
 };

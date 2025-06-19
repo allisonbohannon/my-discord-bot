@@ -17,6 +17,7 @@ module.exports = {
 		.setName('schedule')
 		.setDescription('Lists out all remaining calendar events for the day'),
 	async execute(interaction) {
-		interaction.reply({ content: await main() });
+		await interaction.deferReply();
+		interaction.editReply({ content: await main() });
 	},
 };
