@@ -1,4 +1,4 @@
-const { token } = require('../../config.json');
+const { discordToken } = require('../../config');
 const fs = require('node:fs');
 const path = require('node:path');
 
@@ -59,7 +59,7 @@ const getAllCommands = () => {
 const eventHandler = () => {
 	getAllFiles();
 	getAllCommands();
-    client.login(token);
+    client.login(discordToken);
     console.log('Done')
 };
 
