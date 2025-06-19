@@ -1,6 +1,6 @@
 const { request } = require('undici');
 const convert = require('convert-units');
-const { weatherAPIKey } = require('../../../config.json');
+const { weatherAPIKey } = require('../../../config');
 
 
 const weather = async (zipcode) => {

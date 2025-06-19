@@ -23,6 +23,6 @@ module.exports = {
 	async execute(interaction) {
 		const zipcode = interaction.options.getString('zipcode');
 		await interaction.deferReply();
-		interaction.editReply({ content: await main() });
+		interaction.editReply({ content: await main(zipcode) });
 	},
 };
