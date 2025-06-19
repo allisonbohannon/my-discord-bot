@@ -1,10 +1,9 @@
 const { token } = require('../../config.json');
 const fs = require('node:fs');
 const path = require('node:path');
-const something = require('../commands')
 
 // Import needed functions from discord.js module
-const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
+const { Client, Collection, GatewayIntentBits } = require('discord.js');
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] }); //configure which events the discord bot can receive
 
 // Attach a command file to the client to access commands from other files
@@ -18,7 +17,7 @@ client.on('ready', () => {
 
 const getAllFiles = () => {
 	// Construct a path to the Command directory
-	const foldersPath = path.join(__dirname, '../src/commands');
+	const foldersPath = path.join(__dirname, '../commands');
 	// Returns a array of all folders in the path
 	const commandFolders = fs.readdirSync(foldersPath);
 
@@ -43,7 +42,7 @@ const getAllFiles = () => {
 
 // Dynamically retrieve all of the events
 const getAllCommands = () => {
-	const eventsPath = path.join(__dirname, '../src/events');
+	const eventsPath = path.join(__dirname, '../events');
 	const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'));
 
 	for (const file of eventFiles) {
