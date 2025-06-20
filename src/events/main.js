@@ -9,10 +9,6 @@ const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBit
 // Attach a command file to the client to access commands from other files
 client.commands = new Collection();
 
-client.on('ready', () => {
-	console.log('bot is ready');
-});
-
 // Dynamically retrieve command files
 
 const getAllFiles = () => {
@@ -60,7 +56,6 @@ const eventHandler = () => {
 	getAllFiles();
 	getAllCommands();
     client.login(discordToken);
-    console.log('Done')
 };
 
 module.exports = eventHandler();
