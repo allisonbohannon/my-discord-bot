@@ -1,10 +1,9 @@
-const { request } = require('undici');
+const Title = require('../../db/models/Title');
 
-const recommendation = async () => {
-	// const response = await request('https://meowfacts.herokuapp.com/');
-	// const catData = await response.body.json();
-	// return catData.data[0];
-    return ('Why don\'t you go outside instead?');
+module.exports = async () => {
+	const resp = await Title.findOne({
+
+	});
+	const rec = resp.get();
+    return (`Why don't you watch the ${rec.media_type} ${rec.title}?`);
 };
-
-module.exports = { recommendation: recommendation };

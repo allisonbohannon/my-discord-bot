@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js');
-const { recommendation } = require('../../handlers/watchlist/recommendationHandler');
+const recommendation = require('../../handlers/watchlist/recommendationHandler');
 
 const main = async () => {
 	const result = await recommendation()

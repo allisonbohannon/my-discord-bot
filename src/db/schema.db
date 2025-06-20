@@ -1,0 +1,8 @@
+CREATE TABLE watchlist (
+    id SERIAL PRIMARY KEY, 
+    title VARCHAR(50),
+    media_type VARCHAR(5),
+    genre VARCHAR(30), 
+    platform VARCHAR(30),
+    watched BOOLEAN
+);
