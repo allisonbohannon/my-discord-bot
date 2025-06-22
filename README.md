@@ -31,10 +31,10 @@ Follow the instructions on to create your bot and add your bot to a server. Upda
 Update config/dotenv files to reflect your Postgres instance: database, username, password, and port.
 
 ### Run the code
-- npm i 
-- node .
+- ```npm i``` 
+- ```node .```
 
-Logging is included for optimal use with nodemon my-discord-bot | pino-pretty
+Logging is included for optimal use with nodemon ````my-discord-bot | pino-pretty```
 
 Test your connection by typing /ping, the bot should respond with 'Pong!'
 
