@@ -11,5 +11,6 @@ module.exports = {
 	postgresUser: process.env.POSTGRES_USER,
 	postgresDb: process.env.POSTGRES_DB,
 	postgresPassword: process.env.POSTGRES_PASSWORD,
-	forceDbReset: process.env.FORCE_DB_RESET === 'true',
+	postgresPort: process.env.POSTGRES_PORT,
+	forceDbReset: process.env.FORCE_DB_RESET,
 };
