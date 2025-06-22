@@ -16,10 +16,12 @@ const logger = require('./utils/logger');
 		models[ele].associate(models);
 	});
 
-	await db.sync({ force: forceDbReset });
-	logger.info('Complated database connection');
+	await db.sync({ force: forceDbReset }).then(() => {
+		logger.info('Complated database connection');
+	});
 
 	logger.info('Authenticating with Discord');
-	await client.login(discordToken);
-	logger.info('Completed Discord authentication');
+	await client.login(discordToken).then(() => {
+		logger.info('Completed Discord authentication');
+	});
 })();
