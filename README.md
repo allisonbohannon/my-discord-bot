@@ -2,6 +2,7 @@
 
 ## Overview
 A bot that can be used in a discord server
+
 Key Functionality: 
 1) /cats: pulls a random cat fact from 
 2) /weather
@@ -22,8 +23,18 @@ Key Functionality:
 - postgres
 
 ## Set Up
-- npm i
-- node index.js
+
+### Create a discord-bot
+Follow the instructions on to create your bot and add your bot to a server. Update the bot's token, clientId, and the serverId in the config file (or create a dotenv file to manage these entries). 
+
+### Configure the files to your Postgres
+Update config/dotenv files to reflect your Postgres instance: database, username, password, and port.
+
+### Run the code
+- npm i 
+- node .
+
+Logging is included for optimal use with nodemon my-discord-bot | pino-pretty
 
 Test your connection by typing /ping, the bot should respond with 'Pong!'
 
