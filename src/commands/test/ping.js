@@ -6,6 +6,6 @@ module.exports = {
 		.setDescription('Replies with Pong!'),
 	async execute(interaction) {
 		await interaction.deferReply();
-		interaction.editReply({ content: await main() });
+		interaction.editReply({ content: 'Pong!' });
 	},
 };
