@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js');
-const { weather } = require('../../handlers/utility/weatherHandler');
+const weather = require('../../handlers/utility/weatherHandler');
 
 const main = async (zipcode) => {
 	const result = await weather(zipcode)

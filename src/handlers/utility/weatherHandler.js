@@ -3,7 +3,7 @@ const convert = require('convert-units');
 const { weatherAPIKey } = require('../../config');
 
 
-const weather = async (zipcode) => {
+module.exports = async (zipcode) => {
 	const response = await request(`http://api.openweathermap.org/geo/1.0/zip?zip=${zipcode}&appid=${weatherAPIKey}`);
 	const { name, lat, lon } = await response.body.json();
 
@@ -14,6 +14,4 @@ const weather = async (zipcode) => {
 	return { name: name, temp: temp };
 
 };
-
-module.exports = { weather: weather };
 
