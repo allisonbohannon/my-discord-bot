@@ -1,8 +1,8 @@
 const { SlashCommandBuilder } = require('discord.js');
-const getEvents = require('../../handlers/utility/scheduleHandler');
+const showAll = require('../../handlers/watchlist/showAllHandler');
 
 const main = async () => {
-	const result = await getEvents()
+	const result = await showAll()
 		.then(data => {
 			return data;
 		})
@@ -14,8 +14,8 @@ const main = async () => {
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('schedule')
-		.setDescription('Lists out all remaining calendar events for the day'),
+		.setName('show-full-watchlist')
+		.setDescription('Displays information for all titles currently on watchlist'),
 	async execute(interaction) {
 		await interaction.deferReply();
 		interaction.editReply({ content: await main() });

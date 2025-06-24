@@ -97,8 +97,6 @@ async function listEvents(auth) {
 	return str;
 }
 
-const getEvents = async () => {
+module.exports = async () => {
 	return authorize().then(listEvents).catch(console.error);
 };
-
-module.exports = { getEvents : getEvents };
