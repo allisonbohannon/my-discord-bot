@@ -37,7 +37,7 @@ Update config/dotenv files to reflect your Postgres instance: database, username
 
 Logging is included for optimal use with ```nodemon my-discord-bot | pino-pretty```
 
-Test your connection by typing /ping, the bot should respond with 'Pong!'
+Test your connection by typing /ping into your Discord app, the bot should respond with 'Pong!'
 
 ## Needed Tokens and API Keys
 Discord Bot: bot token, server-id, client-id

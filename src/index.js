@@ -18,7 +18,7 @@ const logger = require('./utils/logger');
 		models[ele].associate(models);
 	});
 
-	await db.sync().then(() => {
+	await db.sync({ force: false }).then(() => {
 		logger.info(`Connected to database: ${sequelize.getDatabaseName()}`);
 		logger.info(`Created table ${Title.getTableName()}`);
 		logger.info(`🔍 Host: ${sequelize.options.host}`);
