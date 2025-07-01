@@ -1,8 +1,24 @@
 const db = require('../index');
 const { Model, DataTypes } = require('sequelize');
 
+
+module.exports = (sequelize, DataTypes) => {
+	const Title = sequelize.define('Title', {
+		title: DataTypes.STRING,
+		media_type: DataTypes.STRING,
+	});
+
+	Title.associate = models => {
+		Title.belongsToMany(models.Genre, { through: 'TitleGenres' });
+	};
+
+	return Title;
+};
+
 class Title extends Model {
-	static associate() {};
+	static associate(models) {
+		Title.belongsToMany(models.Genre, { through: 'TitleGenres' });
+	};
 };
 
 Title.init(
@@ -12,16 +28,6 @@ Title.init(
 		},
 		media_type: {
 			type: DataTypes.STRING,
-		},
-		genre: {
-			type: DataTypes.STRING,
-		},
-		platform: {
-			type: DataTypes.STRING,
-		},
-		watched: {
-			type: DataTypes.BOOLEAN,
-			defaultValue: false,
 		},
 	},
 	{

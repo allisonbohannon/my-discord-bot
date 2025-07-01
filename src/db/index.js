@@ -1,10 +1,18 @@
-const { Sequelize } = require('sequelize');
+const Sequelize = require('sequelize');
 const { postgresUser, postgresDb, postgresPassword, dbHost, postgresPort } = require('../config');
 
-const sequelize = new Sequelize(postgresDb, postgresUser, postgresPassword, {
-	host: dbHost,
-	dialect: 'postgres',
-	port: postgresPort,
-});
+
+// Initialize sequlize instance
+const sequelize = new Sequelize(
+	postgresDb,
+	postgresUser,
+	postgresPassword,
+	{
+		host: dbHost,
+		port: postgresPort,
+		dialect: 'postgres',
+		define: {},
+	},
+);
 
 module.exports = sequelize;

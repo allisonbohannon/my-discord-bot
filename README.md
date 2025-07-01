@@ -14,7 +14,7 @@ Key Functionality:
 4) Media Watchlist management (hosted on localhost database via PostgreSQL)
      - /add-to-watchlist: Add a movie or tv show to your watchlist (title, media type, genre)
      - /recommend-something-to-watch: User inputs media-type and genre, bot returns a recommendation of what to watch from your watchlist
-     - /update-watchlist: Prompts user to make updates to an item on the watchlist
+     - /update-watchlist: Allows user to add additional genres to a title
      - /remove-from-watchlist: Remove an entry from the watchlist by entering title-media type 
      - /see-full-watchlist: See all entries on the watchlist
 

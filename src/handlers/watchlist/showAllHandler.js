@@ -10,7 +10,7 @@ module.exports = async () => {
 	logger.info(resp);
 	let str = 'You have the following titles on your watchlist:\n';
 	resp.forEach(title => {
-		str += `- ${title.title}, a ${title.genre} ${title.media_type}, streaming on ${title.platform}\n`
+		str += `- ${title.title}, a ${title.media_type}\n`;
 	});
 	logger.info(str);
 	return str;
