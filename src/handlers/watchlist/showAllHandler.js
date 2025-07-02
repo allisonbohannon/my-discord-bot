@@ -1,11 +1,15 @@
-const { TimestampStyles } = require('discord.js');
 const { Genre, Title } = require('../../db/models');
 const logger = require('../../utils/logger');
 
 
 module.exports = async () => {
 	const resp = await Title.findAll({
-		include: Genre,
+		attributes: ['title', 'media_type'],
+		include: {
+			model: Genre,
+			attributes: ['genre'],
+			through: { attributes: [] },
+		},
 	});
 	if (!resp) {
 		return 'No titles found!';
